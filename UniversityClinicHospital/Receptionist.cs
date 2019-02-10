@@ -19,7 +19,7 @@ namespace UniversityClinicHospital
             if (Paid == false)
             {
                 Paid = true;
-                Console.WriteLine($"Receptionist {Name} has been paid.");
+                Console.WriteLine($"Receptionist {Name} has been paid {Salary}.");
             }
         }
 

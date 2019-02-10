@@ -18,7 +18,7 @@ namespace UniversityClinicHospital
             if (Paid == false)
             {
                 Paid = true;
-                Console.WriteLine($"Nurse {Name} has been paid.");
+                Console.WriteLine($"Nurse {Name} has been paid {Salary}.");
             }
         }
 
@@ -30,6 +30,12 @@ namespace UniversityClinicHospital
             Console.WriteLine($"#Patients: {NumOfPatients}");
             Console.WriteLine($"Salary: {Salary}");
             Console.WriteLine($"Payment Received: {Paid}\n");
+        }
+
+        public void DrawBlood(Patient patient)
+        {
+            patient.BloodLevel -= 2;
+            patient.HealthLevel -= 2;
         }
 
     }

@@ -34,5 +34,10 @@ namespace UniversityClinicHospital
             Console.WriteLine($"Payment Received: {Paid}\n");
         }
 
+        public void DrawBlood(Patient patient)
+        {
+            patient.BloodLevel -= 5;
+            patient.HealthLevel -= 5;
+        }
     }
 }

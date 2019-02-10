@@ -5,12 +5,8 @@ namespace UniversityClinicHospital
 {
     class Program
     {
-        public static Hospital hospital = new Hospital();
-
         static void Main(string[] args)
         {
-            hospital.PrintAllData();
-            Console.ReadKey();
 
             while (true)
             {
@@ -21,42 +17,90 @@ namespace UniversityClinicHospital
 
         static void MainMenu()
         {
-            Console.Clear();
-            Console.WriteLine("=== Main Menu ===");
-            Console.WriteLine("1. Hospital List");
-            Console.WriteLine("2. Draw Blood");
-            Console.WriteLine("3. Answer Phone");
-            Console.WriteLine("4. Sweep Floor");
-            Console.WriteLine("5. Pay Employee");
+            List<Employee> employees = new List<Employee>();
+            Doctor joey = new Doctor("Heart");
+            employees.Add(joey);
+            joey.Name = "Joey";
+            joey.Id = 1234;
 
-            string choice = Console.ReadLine();
-            switch (choice)
+            Nurse kate = new Nurse();
+            employees.Add(kate);
+            kate.Name = "Kate";
+            kate.Id = 4836;
+
+            Receptionist jane = new Receptionist();
+            employees.Add(jane);
+            jane.Name = "Jane";
+            jane.Id = 9548;
+
+            Janitor bertha = new Janitor();
+            employees.Add(bertha);
+            bertha.Name = "Bertha";
+            bertha.Id = 4372;
+
+            Patient newPatient = new Patient("Sam");
+
+            bool run = true;
+            while (run)
             {
-                case "1":
-                    hospital.PrintAllData();
-                    break;
-                case "2":
-                    break;
-                case "3":
-                    break;
-                case "4":
-                    break;
-                case "5":
-                    break;
-                default:
-                    MainMenu();
-                    break;
+                Console.Clear();
+                Console.WriteLine("=== Main Menu ===");
+                Console.WriteLine("1. Hospital List");
+                Console.WriteLine("2. Draw Blood");
+                Console.WriteLine("3. Answer Phone");
+                Console.WriteLine("4. Sweep Floor");
+                Console.WriteLine("5. Pay Employees");
 
+                string choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "1":
+                        Console.Clear();
+                        joey.PrintData();
+                        kate.PrintData();
+                        jane.PrintData();
+                        bertha.PrintData();
+                        Console.ReadKey();
+                        break;
+                    case "2":
+                        Console.Clear();
+                        Console.WriteLine("1. By Doctor\n2. By Nurse");
+                        string pick = Console.ReadLine();
+                        if (pick == "1")
+                        {
+                            newPatient.DoctorDrawBlood();
+                            Console.ReadKey();
+                        }
+                        else if (pick == "2")
+                        {
+                            newPatient.NurseDrawBlood();
+                            Console.ReadKey();
+                        }
+                        break;
+                    case "3":
+                        Console.Clear();
+                        jane.AnswerPhone();
+                        Console.ReadKey();
+                        break;
+                    case "4":
+                        Console.Clear();
+                        bertha.SweepFloor();
+                        Console.ReadKey();
+                        break;
+                    case "5":
+                        Console.Clear();
+                        foreach (var Employee in employees)
+                        {
+                            Employee.PaySalary();
+                            Console.ReadKey();
+                        }
+                        break;
+                    default:
+                        MainMenu();
+                        break;
+                }
             }
 
-        }
-
-        static void PickDoctorNurse()
-        {
-            foreach (var Patient in Patients)
-            {
-                patient.PrintPatientData();
-            }
         }
 
     }

@@ -8,11 +8,12 @@ namespace UniversityClinicHospital
     public class Patient
     {
         public string Name { get; set; }
-        public int BloodLevel { get; private set; }
-        public int HealthLevel { get; private set; }
+        public int BloodLevel { get; set; }
+        public int HealthLevel { get; set; }
 
-        public Patient()
+        public Patient(string name)
         {
+            Name = name;
             BloodLevel = 20;
             HealthLevel = 10;
         }
@@ -24,7 +25,7 @@ namespace UniversityClinicHospital
             Console.WriteLine($"Health: {HealthLevel}\n");
         }
 
-        public void DoctorDrawBlood(Doctor doctor)
+        public void DoctorDrawBlood()
         {
             BloodLevel -= 5;
             HealthLevel -= 5;
@@ -34,7 +35,7 @@ namespace UniversityClinicHospital
 
         }
 
-        public void NurseDrawBlood(Nurse nurse)
+        public void NurseDrawBlood()
         {
             BloodLevel -= 2;
             HealthLevel -= 2;

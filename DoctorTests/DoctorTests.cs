@@ -38,7 +38,7 @@ namespace DoctorTests
         public void Doctor_Draws_Blood()
         {
             var joey = new Doctor("Heart");
-            var sam = new Patient();
+            var sam = new Patient("Sam");
 
         }
     }
