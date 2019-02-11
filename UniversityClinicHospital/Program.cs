@@ -7,12 +7,10 @@ namespace UniversityClinicHospital
     {
         static void Main(string[] args)
         {
-
             while (true)
             {
                 MainMenu();
             }
-
         }
 
         static void MainMenu()
@@ -50,6 +48,7 @@ namespace UniversityClinicHospital
                 Console.WriteLine("3. Answer Phone");
                 Console.WriteLine("4. Sweep Floor");
                 Console.WriteLine("5. Pay Employees");
+                Console.WriteLine("0. EXIT");
 
                 string choice = Console.ReadLine();
                 switch (choice)
@@ -88,19 +87,34 @@ namespace UniversityClinicHospital
                         Console.ReadKey();
                         break;
                     case "5":
-                        Console.Clear();
                         foreach (var Employee in employees)
                         {
-                            Employee.PaySalary();
-                            Console.ReadKey();
+                            Console.Clear();
+                            Console.WriteLine($"Pay {Employee.Name}?");
+                            Console.WriteLine("y for yes   n for no");
+                            string payment = Console.ReadLine();
+                            if (payment == "y")
+                            {
+                                if (Employee.Paid == false)
+                                {
+                                    Employee.PaySalary();
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"{Employee.Name} has already been paid.");
+                                    Console.ReadKey();
+                                }
+                            }
                         }
+                        break;
+                    case "0":
+                        Environment.Exit(0);
                         break;
                     default:
                         MainMenu();
                         break;
                 }
             }
-
         }
 
     }
